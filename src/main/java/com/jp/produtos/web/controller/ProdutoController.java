@@ -1,5 +1,6 @@
 package com.jp.produtos.web.controller;
 
+import com.jp.produtos.domain.produto.Produto;
 import com.jp.produtos.domain.produto.ProdutoService;
 import com.jp.produtos.web.controller.docs.ProdutoDocs;
 import com.jp.produtos.web.controller.dto.request.ProdutoRequest;
@@ -40,5 +41,11 @@ public class ProdutoController implements ProdutoDocs {
         Page<ProdutoResponse> produtoResponsePage = produtoService.listAll(nome, pageable)
                 .map(ProdutoResponse::toModel);
         return ResponseEntity.ok(produtoResponsePage);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProdutoResponse> getById(@PathVariable("id") Long id) {
+        Produto produto = produtoService.getById(id);
+        return ResponseEntity.ok(ProdutoResponse.toModel(produto));
     }
 }

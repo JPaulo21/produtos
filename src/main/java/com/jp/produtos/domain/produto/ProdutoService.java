@@ -22,6 +22,11 @@ public class ProdutoService {
         return produtoRepository.findAll(spec ,pageable);
     }
 
+    public Produto getById(Long id) {
+        return produtoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+    }
+
     // Ideal separar em uma classe com pattern Specification caso aumente o número de paramêtros
     public static Specification<Produto> hasNome(String nome) {
         return (root, query, cb) -> {
