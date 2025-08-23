@@ -8,8 +8,10 @@ import com.jp.produtos.web.controller.dto.response.ProdutoResponse;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
+import static org.springframework.data.domain.Sort.Direction.ASC;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
@@ -39,7 +42,7 @@ public class ProdutoController implements ProdutoDocs {
 
     @GetMapping
     public ResponseEntity<Page<ProdutoResponse>> listAll(@RequestParam(required = false) String nome,
-                                                         @Parameter(hidden = true) @PageableDefault Pageable pageable){
+                                                         @ParameterObject @PageableDefault(sort = "preco",direction = ASC) Pageable pageable){
         Page<ProdutoResponse> produtoResponsePage = produtoService.listAll(nome, pageable)
                 .map(ProdutoResponse::toModel);
         return ResponseEntity.ok(produtoResponsePage);
