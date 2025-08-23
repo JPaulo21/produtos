@@ -18,7 +18,7 @@
 ---
 ### Criar um novo produto.
 ### `POST` /api/produtos
-
+Authorization: Bearer {token}
 ```json
 {
   "id": Long,
@@ -32,16 +32,20 @@
 ---
 ### Listar todos os produtos.
 ### `GET` /api/produtos
+Authorization: Bearer {token}
 
 ---
 ### Obter detalhes de um produto por ID.
 ### `GET` /api/produtos/{id}
+Authorization: Bearer {token}
 
 ---
 ### Atualizar um produto existente por ID.
 ### `PUT` /produtos/{id}
+Authorization: Bearer {token}
 
 ---
 ### Remover um produto por ID.
 ### `DELETE` /api/produtos/{id}
+Authorization: Bearer {token}
 

@@ -1,0 +1,15 @@
+package com.jp.produtos.web.controller.docs;
+
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
+
+@Tag(name = "Autenticação", description = "Endpoints para operações de autenticação")
+public interface AuthDocs {
+
+    @Operation(summary = "Gerar token de autenticação", tags = {"Autenticação"})
+    @ApiResponse(responseCode = "200", description = "Token gerado com sucesso!")
+    ResponseEntity<ObjectNode> token();
+}
