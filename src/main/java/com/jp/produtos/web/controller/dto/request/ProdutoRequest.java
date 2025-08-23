@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Schema(description = "Representa a requisição para criação de um novo produto")
 public record ProdutoRequest(
         @Schema(description = "Nome do produto", example = "Notebook Dell")
-        @NotBlank(message = "Campo nome não foi preenchido")
+        @NotBlank(message = "Campo nome não foi informado.")
         String nome,
         @Schema(description = "Descrição do produto", example = "Notebook Dell Inspiron 15 3000")
         String descricao,

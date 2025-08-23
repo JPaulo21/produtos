@@ -7,6 +7,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class ProdutoService {
@@ -15,6 +17,9 @@ public class ProdutoService {
 
     @Transactional
     public Produto save(Produto produto){
+        if(produto.getDataCriacao() == null)
+            produto.setDataCriacao(LocalDateTime.now());
+
         return produtoRepository.save(produto);
     }
 
