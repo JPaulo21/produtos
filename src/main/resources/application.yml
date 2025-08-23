@@ -13,3 +13,9 @@ server:
     include-stacktrace: never
   servlet:
     context-path: /api
+
+
+api:
+  security:
+    token:
+      key: ${API_SECURITY_TOKEN_KEY}
