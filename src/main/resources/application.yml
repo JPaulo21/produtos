@@ -1,3 +1,15 @@
 spring:
   application:
     name: produtos-api
+  datasource:
+    url: ${JDBC_URL}
+    username: ${JDBC_USERNAME}
+    password: ${JDBC_PASSWORD}
+
+
+server:
+  port: ${PORT:8080}
+  error:
+    include-stacktrace: never
+  servlet:
+    context-path: /api
