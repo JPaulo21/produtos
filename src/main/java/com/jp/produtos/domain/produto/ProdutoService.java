@@ -27,6 +27,17 @@ public class ProdutoService {
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
     }
 
+    public void update(Long id, Produto updateProduto) {
+        Produto produto = this.getById(id);
+
+        produto.setNome(updateProduto.getNome() != null ? updateProduto.getNome() : produto.getNome());
+        produto.setDescricao(updateProduto.getDescricao() != null ? updateProduto.getDescricao() : produto.getDescricao());
+        produto.setPreco(updateProduto.getPreco() != null ? updateProduto.getPreco() : produto.getPreco());
+        produto.setQuantidade(updateProduto.getQuantidade() != null ? updateProduto.getQuantidade() : produto.getQuantidade());
+
+        produtoRepository.save(produto);
+    }
+
     // Ideal separar em uma classe com pattern Specification caso aumente o número de paramêtros
     public static Specification<Produto> hasNome(String nome) {
         return (root, query, cb) -> {

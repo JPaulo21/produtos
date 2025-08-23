@@ -17,8 +17,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping(value = "/produtos", produces = APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class ProdutoController implements ProdutoDocs {
 
@@ -48,4 +50,12 @@ public class ProdutoController implements ProdutoDocs {
         Produto produto = produtoService.getById(id);
         return ResponseEntity.ok(ProdutoResponse.toModel(produto));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> update(@PathVariable("id") Long id,
+                                       @RequestBody @Valid ProdutoRequest produtoRequest) {
+        produtoService.update(id, produtoRequest.toEntity());
+        return ResponseEntity.noContent().build();
+    }
+
 }

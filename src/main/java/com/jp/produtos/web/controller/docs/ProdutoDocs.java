@@ -7,9 +7,12 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Tag(name = "Produtos", description = "Gerenciamento de produtos")
 public interface ProdutoDocs {
@@ -28,4 +31,8 @@ public interface ProdutoDocs {
     @ApiResponse(responseCode = "200", description = "Detalhes do produto",
             content = @Content(schema = @Schema(implementation = ProdutoResponse.class)))
     ResponseEntity<ProdutoResponse> getById(Long id);
+
+    @Operation(summary = "Atualizar produto", description = "Endpoint para atualizar os detalhes de um produto existente")
+    @ApiResponse(responseCode = "204", description = "Produto atualizado com sucesso")
+    ResponseEntity<Void> update(Long id, ProdutoRequest produtoRequest);
 }

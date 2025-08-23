@@ -43,6 +43,16 @@ Authorization: Bearer {token}
 ### Atualizar um produto existente por ID.
 ### `PUT` /produtos/{id}
 Authorization: Bearer {token}
+```json
+{
+  "id": Long,
+  "nome": String,
+  "descricao": String,
+  "preco": Double,
+  "quantidadeEstoque": Integer,
+  "dataCriacao": LocalDateTime
+}	
+```
 
 ---
 ### Remover um produto por ID.
