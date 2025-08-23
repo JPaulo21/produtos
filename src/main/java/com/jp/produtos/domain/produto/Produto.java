@@ -3,6 +3,8 @@ package com.jp.produtos.domain.produto;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "produtos")
 @NoArgsConstructor
@@ -25,6 +27,9 @@ public class Produto {
     @Column(name = "preco", nullable = false)
     private Double preco;
 
-    @Column(name = "quantidade", nullable = false)
-    private Integer quantidade;
+    @Column(name = "quantidade_estoque", nullable = false)
+    private Integer quantidadeEstoque;
+
+    @Column(name = "data_criacao", nullable = false)
+    private LocalDateTime dataCriacao;
 }

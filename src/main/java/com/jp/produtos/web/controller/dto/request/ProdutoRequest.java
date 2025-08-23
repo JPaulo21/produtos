@@ -1,9 +1,13 @@
 package com.jp.produtos.web.controller.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jp.produtos.domain.produto.Produto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+
+import java.time.LocalDateTime;
 
 @Schema(description = "Representa a requisição para criação de um novo produto")
 public record ProdutoRequest(
@@ -17,7 +21,11 @@ public record ProdutoRequest(
         Double preco,
         @Schema(description = "Quantidade em estoque do produto", example = "10")
         @Positive(message = "A quantidade deve ser um número inteiro positivo.")
-        Integer quantidade
+        Integer quantidadeEstoque,
+
+        @Schema(description = "Data de criação do produto", example = "2025-06-23T12:00:00")
+        @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+        LocalDateTime dataCriacao
 ) {
 
     public Produto toEntity() {
@@ -25,7 +33,8 @@ public record ProdutoRequest(
                 .nome(nome)
                 .descricao(descricao)
                 .preco(preco)
-                .quantidade(quantidade)
+                .quantidadeEstoque(quantidadeEstoque)
+                .dataCriacao(dataCriacao)
                 .build();
     }
 }
