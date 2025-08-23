@@ -58,4 +58,10 @@ public class ProdutoController implements ProdutoDocs {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
+        produtoService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

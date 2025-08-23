@@ -35,4 +35,8 @@ public interface ProdutoDocs {
     @Operation(summary = "Atualizar produto", description = "Endpoint para atualizar os detalhes de um produto existente")
     @ApiResponse(responseCode = "204", description = "Produto atualizado com sucesso")
     ResponseEntity<Void> update(Long id, ProdutoRequest produtoRequest);
+
+    @Operation(summary = "Deletar produto", description = "Endpoint para deletar um produto existente pelo seu ID")
+    @ApiResponse(responseCode = "204", description = "Produto deletado com sucesso")
+    ResponseEntity<Void> delete(@PathVariable("id") Long id);
 }
