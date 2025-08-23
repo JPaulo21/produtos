@@ -9,4 +9,7 @@ public class ProdutoService {
 
     private final ProdutoRepository produtoRepository;
 
+    public Produto save(Produto produto){
+        return produtoRepository.save(produto);
+    }
 }
