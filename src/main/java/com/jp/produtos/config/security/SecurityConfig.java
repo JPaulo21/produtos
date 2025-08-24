@@ -45,6 +45,8 @@ public class SecurityConfig {
                         .requestMatchers(GET,"/token").permitAll()
                         .anyRequest().authenticated()
                 )
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint(new AuthenticationEntryPoint()))
                 .build();
     }
 
