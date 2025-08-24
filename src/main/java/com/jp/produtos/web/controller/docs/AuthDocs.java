@@ -1,6 +1,7 @@
 package com.jp.produtos.web.controller.docs;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.jp.produtos.config.security.JWT.Token;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,6 +14,6 @@ public interface AuthDocs {
 
     @Operation(summary = "Gerar token de autenticação", tags = {"Autenticação"})
     @ApiResponse(responseCode = "200", description = "Token gerado com sucesso!",
-            content = @Content(schema = @Schema(implementation = ObjectNode.class)))
-    ResponseEntity<ObjectNode> token();
+            content = @Content(schema = @Schema(implementation = Token.class)))
+    ResponseEntity<Token> token();
 }
