@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface ProdutoDocs {
 
     @Operation(summary = "Salvar um novo produto", description = "Endpoint para salvar um novo produto no sistema")
-    @ApiResponse(responseCode = "201", description = "Produto salvo com sucesso",
+    @ApiResponse(responseCode = "201", description = "Header Location com a localização do novo produto",
             content = @Content(schema = @Schema(implementation = ProdutoResponse.class)))
     ResponseEntity<Void> save(ProdutoRequest produtoRequest);
 

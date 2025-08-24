@@ -7,8 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
@@ -21,8 +19,6 @@ public class ApiControllerAdvice {
 
     private final Logger logger = LoggerFactory.getLogger(ApiControllerAdvice.class);
 
-    @ResponseBody
-    @ResponseStatus(INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleException(HttpServletRequest req, Exception ex) {
         logger.error("Exception: {}", ex.getMessage());
@@ -34,8 +30,6 @@ public class ApiControllerAdvice {
                 ex.getMessage()));
     }
 
-    @ResponseBody
-    @ResponseStatus(BAD_REQUEST)
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ErrorResponse> handleRuntimeException(HttpServletRequest req, RuntimeException ex) {
         logger.error("RuntimeException: {}", ex.getMessage());
