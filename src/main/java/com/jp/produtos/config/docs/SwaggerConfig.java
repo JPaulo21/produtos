@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 @OpenAPIDefinition(
         info = @Info(
                 title = "Produto API"
-                , description = "api to obtain data from football clubs"
+                , description = "API REST para Cadastro de Produtos"
                 , version = "1.0"
                 , contact = @Contact(name = "João Paulo", email = "jp.sport17@gmail.com")
                 , license = @License(
