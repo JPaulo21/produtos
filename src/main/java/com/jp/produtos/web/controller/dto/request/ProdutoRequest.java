@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jp.produtos.domain.produto.Produto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Positive;
 
 import java.time.LocalDateTime;
@@ -25,6 +25,7 @@ public record ProdutoRequest(
 
         @Schema(description = "Data de criação do produto", example = "2025-06-23T12:00:00")
         @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+        @PastOrPresent(message = "A data de criação não pode ser posterior a data atual")
         LocalDateTime dataCriacao
 ) {
 
