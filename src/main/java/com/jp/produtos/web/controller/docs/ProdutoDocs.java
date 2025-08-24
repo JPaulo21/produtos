@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@Tag(name = "Produtos", description = "Gerenciamento de produtos")
+@Tag(name = "Produtos", description = "Gerenciamento de produtos - TOKEN OBRIGATÓRIO")
 public interface ProdutoDocs {
 
     @Operation(summary = "Salvar um novo produto", description = "Endpoint para salvar um novo produto no sistema")

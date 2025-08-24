@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 
-@Tag(name = "Autenticação", description = "Endpoints para operações de autenticação")
+@Tag(name = "Autenticação", description = "Endpoint para obter token de autenticação")
 public interface AuthDocs {
 
     @Operation(summary = "Gerar token de autenticação", tags = {"Autenticação"})
