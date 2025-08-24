@@ -3,6 +3,7 @@ package com.jp.produtos.web.controller.docs;
 import com.jp.produtos.web.controller.dto.request.ProdutoRequest;
 import com.jp.produtos.web.controller.dto.response.ProdutoResponse;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.headers.Header;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -17,6 +18,7 @@ public interface ProdutoDocs {
 
     @Operation(summary = "Salvar um novo produto", description = "Endpoint para salvar um novo produto no sistema")
     @ApiResponse(responseCode = "201", description = "Header Location com a localização do novo produto",
+            headers = @Header(name = "Location", description = "URI do novo produto"),
             content = @Content(schema = @Schema(implementation = ProdutoResponse.class)))
     ResponseEntity<Void> save(ProdutoRequest produtoRequest);
 

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jp.produtos.domain.produto.Produto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Positive;
 
@@ -17,9 +18,11 @@ public record ProdutoRequest(
         @Schema(description = "Descrição do produto", example = "Notebook Dell Inspiron 15 3000")
         String descricao,
         @Schema(description = "Preço do produto", example = "3500.00")
+        @NotNull(message = "Campo 'preco' não foi informado.")
         @Positive(message = "O preço deve ser maior que zero")
         Double preco,
         @Schema(description = "Quantidade em estoque do produto", example = "10")
+        @NotNull(message = "Campo 'quantidadeEstoque' não foi informado.")
         @Positive(message = "A quantidade deve ser um número inteiro positivo.")
         Integer quantidadeEstoque,
 
